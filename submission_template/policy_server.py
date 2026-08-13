@@ -63,33 +63,33 @@ class BasePolicy(ABC):
 # ============================================================
 
 
-class MyPolicy(BasePolicy):
-    """自分のポリシーをここに実装する。
-
-    例: チェックポイントをロードして推論する場合
-        def __init__(self):
-            self.model = torch.load("model_weights/checkpoint.pth")
-            self.model.eval()
-
-        def get_action(self, obs):
-            image = obs["agentview_image"]
-            # ... 前処理・推論 ...
-            return action
-    """
-
-    def __init__(self):
-        # TODO: モデルのロード
-        pass
-
-    def get_action(self, obs: dict[str, np.ndarray]) -> np.ndarray:
-        # TODO: 推論処理を実装
-        # 以下はランダムポリシー（動作確認用）
-        return np.random.uniform(-1, 1, size=7).astype(np.float32)
-
-    def reset(self, instruction: str = "") -> None:
-        # TODO: 内部状態のリセット（action chunking のキャッシュ等）
-        # instruction にはタスクの言語指示が渡される
-        self.instruction = instruction
+- class MyPolicy(BasePolicy):
+-     """自分のポリシーをここに実装する。
+- 
+-     例: チェックポイントをロードして推論する場合
+-         def __init__(self):
+-             self.model = torch.load("model_weights/checkpoint.pth")
+-             self.model.eval()
+- 
+-         def get_action(self, obs):
+-             image = obs["agentview_image"]
+-             # ... 前処理・推論 ...
+-             return action
+-     """
+- 
+-     def __init__(self):
+-         # TODO: モデルのロード
+-         pass
+- 
+-     def get_action(self, obs: dict[str, np.ndarray]) -> np.ndarray:
+-         # TODO: 推論処理を実装
+-         # 以下はランダムポリシー（動作確認用）
+-         return np.random.uniform(-1, 1, size=7).astype(np.float32)
+- 
+-     def reset(self, instruction: str = "") -> None:
+-         # TODO: 内部状態のリセット（action chunking のキャッシュ等）
+-         # instruction にはタスクの言語指示が渡される
+-         self.instruction = instruction
 
 
 # ============================================================
